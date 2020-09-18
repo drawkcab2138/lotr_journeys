@@ -100,7 +100,6 @@ function addToDeckFromAllcards(id) {
     elem = document.getElementById("allcardsDiv"+id+"Remove");
     elem.disabled=0;
     updateDeckFromAllCards();
-    updateDeck();
 }
 
 function removeFromDeckFromAllcards(id) {
@@ -110,7 +109,6 @@ function removeFromDeckFromAllcards(id) {
     elem = document.getElementById("allcardsDiv"+id+"Remove");
     elem.disabled=1;
     updateDeckFromAllCards();
-    updateDeck();
 }
 
 function updateDeckFromAllCards() {
@@ -121,6 +119,7 @@ function updateDeckFromAllCards() {
             deck.push(allcards[i]);
         }
     }
+    updateDeck();
 }
 
 function shuffleDeck() {
