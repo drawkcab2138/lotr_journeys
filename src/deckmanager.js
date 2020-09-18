@@ -1,4 +1,4 @@
-let deck = ["test1","test2","test3","test4","test5","test6"]
+let deck = []
 let hand = []
 let discard = []
 let scoutedcards = []
@@ -66,48 +66,6 @@ function stopEditingDeck() {
 }
 
 function displayCard(card, elem, displayAll) {
-    /*
-    if (displayAll) {
-        childElement = document.createElement("p");
-        appendChildElement = elem.appendChild(childElement);
-        appendChildElement.innerText = "Hero/Role: " + allcards[id].Type;
-    }
-
-    if (displayAll) {
-        childElement = document.createElement("p");
-        appendChildElement = elem.appendChild(childElement);
-        appendChildElement.innerText = "XP: " + allcards[id].XP;
-    }
-
-    childElement = document.createElement("p");
-    appendChildElement = elem.appendChild(childElement);
-    appendChildElement.innerText = "Name: " + allcards[id].Name;
-
-    if (displayAll) {
-        childElement = document.createElement("p");
-        appendChildElement = elem.appendChild(childElement);
-        appendChildElement.innerText = "Number: " + allcards[id].Number;
-    }
-
-    childElement = document.createElement("p");
-    appendChildElement = elem.appendChild(childElement);
-    appendChildElement.innerText = "Trait: " + allcards[id].Trait;
-
-    childElement = document.createElement("p");
-    appendChildElement = elem.appendChild(childElement);
-    appendChildElement.innerText = "Icon: " + allcards[id].Icon;
-
-    if (displayAll) {
-        childElement = document.createElement("p");
-        appendChildElement = elem.appendChild(childElement);
-        appendChildElement.innerText = "Reshyk Rating: " + allcards[id].ReshykRating;
-    }
-
-    childElement = document.createElement("p");
-    appendChildElement = elem.appendChild(childElement);
-    appendChildElement.innerText = "Ability: " + allcards[id].Ability;
-    */
-
    childElement = document.createElement("pre");
    appendChildElement = elem.appendChild(childElement);
    if (displayAll) {
@@ -368,28 +326,6 @@ function updateDiscard(){
     }
 }
 
-//delete this function
-function removeDivId(id) {
-    elem = document.getElementById("div"+id);
-    elem.parentElement.removeChild(elem);
-    length = scoutedcards.length;
-    for (i=id+1; i<length; i++) {
-        elem = document.getElementById("div"+i);
-        elem.id="div"+(i-1);
-
-        elem = document.getElementById("div"+i+"Top");
-        elem.setAttribute("onclick","topOfDeck("+(i-1)+")");
-        elem.id="div"+(i-1)+"Top";
-
-        elem = document.getElementById("div"+i+"Bottom");
-        elem.setAttribute("onclick","bottomOfDeck("+(i-1)+")");
-        elem.id="div"+(i-1)+"Bottom";
-
-        elem = document.getElementById("div"+i+"Prepare");
-        elem.setAttribute("onclick","prepare("+(i-1)+")");
-        elem.id="div"+(i-1)+"Prepare";
-    }
-}
 /**
  * Randomly shuffle an array
  * https://stackoverflow.com/a/2450976/1293256
