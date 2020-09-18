@@ -58,6 +58,7 @@ function editDeck() {
         }
     }
     updateDeckFromAllCards();
+    shuffleDeck();
 }
 
 function stopEditingDeck() {
