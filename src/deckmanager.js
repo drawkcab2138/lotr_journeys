@@ -16,6 +16,7 @@ function reset() {
 function editDeck() {
     parentElement = document.getElementById("allcards");
     parentElement.hidden=0;
+    addedWeakness=0;
     while(parentElement.firstChild) {
         parentElement.removeChild(parentElement.firstChild);
     }
@@ -26,6 +27,9 @@ function editDeck() {
             
         } else if (allcards[i].Type=="Basic") {
             allcards[i].inDeck=1;
+        } else if (allcards[i].Type=="Weakness" && addedWeakness==0) {
+            allcards[i].inDeck=1;
+            addedWeakness=1;
         } else {
             allcards[i].inDeck=0;
         }
@@ -133,6 +137,18 @@ function shuffleDiscardIntoDeck() {
     shuffleDeck();
     updateDeck();
     updateDiscard();
+}
+
+function addWeaknessToDiscard() {
+    for (i=0; i<allcards.length; i++) {
+        if (allcards[i].Type=="Weakness" && allcards[i].inDeck==0) {
+            allcards[i].inDeck=1;
+            discard.push(allcards[i]);
+            updateDiscard();
+            return;
+        }
+    }
+
 }
 function scout() {
     if (deck.length==0) {

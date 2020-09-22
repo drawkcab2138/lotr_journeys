@@ -2198,5 +2198,115 @@ let allcards=[
       "Icon": "1 Success",
       "ReshykRating": "-",
       "Ability": "Yet dawn is ever the hope of men.\"\n- The Two Towers"
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 1,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 2,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 3,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 4,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 5,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 6,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 7,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 8,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 9,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 10,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
+    },
+    {
+      "Type": "Weakness",
+      "XP": "Start",
+      "Name": "Food Coma",
+      "Number": 11,
+      "Trait": "-",
+      "Icon": "-",
+      "ReshykRating": "-",
+      "Ability": "I just don't want to look back and think \"I could've eaten that\""
     }
   ];
