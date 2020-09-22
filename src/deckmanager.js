@@ -2,6 +2,7 @@ let deck = []
 let hand = []
 let discard = []
 let scoutedcards = []
+let removedcards = []
 
 function reset() {
     deck = deck.concat(hand,discard,scoutedcards);
@@ -229,6 +230,20 @@ function prepareFromDiscard(id){
     updateHand();
 }
 
+function removedFromDiscard(id){
+    removedcards.push(discard[id]);
+    discard.splice(id,1);
+    updateDiscard();
+    updateRemoved();
+}
+
+function discardFromRemoved(id){
+    discard.push(removedcards[id]);
+    removedcards.splice(id,1);
+    updateDiscard();
+    updateRemoved();
+}
+
 function updateScoutedCards() {
     parentElement = document.getElementById("scoutedcards");
     while(parentElement.firstChild) {
@@ -339,6 +354,33 @@ function updateDiscard(){
         appendChildElement.setAttribute("onclick","prepareFromDiscard("+i+")");
         appendChildElement.innerText = "Prepare";
         appendChildElement.id = parentElement.id+"Prepare";
+
+        childElement = document.createElement("button");
+        appendChildElement = parentElement.appendChild(childElement);
+        appendChildElement.setAttribute("onclick","removedFromDiscard("+i+")");
+        appendChildElement.innerText = "Remove from Game";
+        appendChildElement.id = parentElement.id+"Remove";
+    }
+}
+
+function updateRemoved(){
+    parentElement = document.getElementById("removed");
+    while(parentElement.firstChild) {
+        parentElement.removeChild(parentElement.firstChild);
+    }
+    for (i=-0; i<removedcards.length; i++) {
+        parentElement = document.getElementById("removed");
+        childElement = document.createElement("div");
+        appendChildElement = parentElement.appendChild(childElement);
+        appendChildElement.id = "div"+i;
+        displayCard(removedcards[i], appendChildElement, 0);
+    
+        parentElement = appendChildElement;
+        childElement = document.createElement("button");
+        appendChildElement = parentElement.appendChild(childElement);
+        appendChildElement.setAttribute("onclick","discardFromRemoved("+i+")");
+        appendChildElement.innerText = "Discard";
+        appendChildElement.id = parentElement.id+"Discard";
     }
 }
 
