@@ -10,13 +10,14 @@
 <div id="controls">
     <button onclick="reset()">Reset</button>
     <button onclick="editDeck()">Edit Deck</button>
-    <button onclick="stopEditingDeck()">Stop Editing Deck</button>
-    <div id="allcards"></div>
+    <div id="allcards" hidden=1></div>
 </div>
 <div id="deckSection">
     <h1>Deck</h1>
     <p id="deckNumber">0 cards in deck</p>
     <button onclick="shuffleDeck()">Shuffle deck</button>
+    <button onclick="showDeck()">Show deck</button>
+    <div id="deck" hidden=1></div>
 </div>
 
 <button onclick="scout()">Scout</button>

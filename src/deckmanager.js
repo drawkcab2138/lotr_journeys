@@ -19,7 +19,11 @@ function reset() {
 }
 function editDeck() {
     parentElement = document.getElementById("allcards");
-    parentElement.hidden=0;
+    if (parentElement.hidden==1) {
+        parentElement.hidden=0;
+    } else {
+        parentElement.hidden=1;
+    }
     if (deckSectionCreated) {
         return;
     }
@@ -69,12 +73,6 @@ function editDeck() {
         }
     }
     updateDeckFromAllCards();
-    //shuffleDeck();
-}
-
-function stopEditingDeck() {
-    elem = document.getElementById("allcards");
-    elem.hidden=1;
 }
 
 function displayCard(card, elem, displayAll) {
@@ -113,7 +111,6 @@ function addToDeckFromAllcards(id) {
     elem.disabled=0;
     deck.push(allcards[id]);
     updateDeck();
-    //updateDeckFromAllCards();
 }
 
 function removeFromDeckFromAllcards(id) {
@@ -135,7 +132,6 @@ function removeFromDeckFromAllcards(id) {
             updateRemoved();
         }
     }
-    //updateDeckFromAllCards();
 }
 
 function updateDeckFromAllCards() {
@@ -149,8 +145,21 @@ function updateDeckFromAllCards() {
     updateDeck();
 }
 
+function showDeck() {
+
+    parentElement = document.getElementById("deck");
+    if (parentElement.hidden==0 ) {
+        parentElement.hidden=1;
+        return;
+    } else {
+        parentElement.hidden=0;
+    }
+    updateDeck();
+}
+
 function shuffleDeck() {
     shuffle(deck);
+    updateDeck();
 }
 
 function shuffleDiscardIntoDeck() {
@@ -265,6 +274,20 @@ function discardFromRemoved(id){
     updateRemoved();
 }
 
+function prepareFromDeck(id){
+    hand.push(deck[id]);
+    deck.splice(id,1);
+    updateDeck();
+    updateHand();
+}
+
+function discardFromDeck(id){
+    discard.push(deck[id]);
+    deck.splice(id,1);
+    updateDeck();
+    updateDiscard();
+}
+
 function updateScoutedCards() {
     parentElement = document.getElementById("scoutedcards");
     while(parentElement.firstChild) {
@@ -336,10 +359,36 @@ function updateHand() {
         appendChildElement.id = parentElement.id+"Discard";
     }
 }
-
-function updateDeck(){
+function updateDeck() {
     elem = document.getElementById("deckNumber");
     elem.innerText=deck.length+" cards in deck";
+
+    parentElement = document.getElementById("deck");
+    if (parentElement.hidden==1) {
+        return;
+    }
+    while(parentElement.firstChild) {
+        parentElement.removeChild(parentElement.firstChild);
+    }
+    for (i=-0; i<deck.length; i++) {
+        parentElement = document.getElementById("deck");
+        childElement = document.createElement("div");
+        appendChildElement = parentElement.appendChild(childElement);
+        appendChildElement.id = "div"+i;
+        displayCard(deck[i], appendChildElement, 0);
+    
+        childElement = document.createElement("button");
+        appendChildElement = parentElement.appendChild(childElement);
+        appendChildElement.setAttribute("onclick","prepareFromDeck("+i+")");
+        appendChildElement.innerText = "Prepare";
+        appendChildElement.id = parentElement.id+"Prepare";
+    
+        childElement = document.createElement("button");
+        appendChildElement = parentElement.appendChild(childElement);
+        appendChildElement.setAttribute("onclick","discardFromDeck("+i+")");
+        appendChildElement.innerText = "Discard";
+        appendChildElement.id = parentElement.id+"Discard";
+    }
 }
 
 function updateDiscard(){
