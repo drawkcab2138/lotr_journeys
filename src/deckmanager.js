@@ -5,6 +5,8 @@ let scoutedcards = []
 let removedcards = []
 let zones=["deck","hand","discard","scoutedcards","removedcards"]
 deckSectionCreated=0;
+let hero = "";
+let role = "";
 
 function reset() {
     deck = deck.concat(hand,discard,scoutedcards);
@@ -19,10 +21,13 @@ function reset() {
 }
 function editDeck() {
     parentElement = document.getElementById("allcards");
+    heroSelect = document.getElementById("heroselect");
     if (parentElement.hidden==1) {
         parentElement.hidden=0;
+        heroSelect.hidden=0;
     } else {
         parentElement.hidden=1;
+        heroSelect.hidden=1;
     }
     if (deckSectionCreated) {
         return;
@@ -122,7 +127,6 @@ function removeFromDeckFromAllcards(id) {
 
     for (i=0; i<zones.length; i++) {
         index=eval(zones[i]).findIndex((element)=>element.Name==allcards[id].Name && element.Number==allcards[id].Number);
-        console.log(index);
         if (index!=-1) {
             eval(zones[i]).splice(index,1);
             updateDeck();
@@ -155,6 +159,33 @@ function showDeck() {
         parentElement.hidden=0;
     }
     updateDeck();
+}
+
+function selectHero(selectObject) {
+    oldHero = hero;
+    hero = selectObject.value;
+    for (j=0; j<allcards.length; j++) {
+        if (allcards[j].Type==hero && allcards[j].XP=="Start") {
+            addToDeckFromAllcards(j);
+        } else if (allcards[j].Type==oldHero && allcards[j].XP=="Start") {
+            removeFromDeckFromAllcards(j);
+        }
+    }
+}
+
+function selectRole(selectObject) {
+    oldRole=role;
+    role=selectObject.value;
+    for (j=0; j<allcards.length; j++) {
+        if (allcards[j].Type==role && allcards[j].XP=="Start") {
+            addToDeckFromAllcards(j);
+            if (allcards[j].Number==1) {
+                prepareFromDeck(deck.length-1);
+            }
+        } else if (allcards[j].Type==oldRole && allcards[j].XP=="Start") {
+            removeFromDeckFromAllcards(j);
+        }
+    }
 }
 
 function shuffleDeck() {
