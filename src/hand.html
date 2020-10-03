@@ -10,6 +10,27 @@
 <div id="controls">
     <button onclick="reset()">Reset</button>
     <button onclick="editDeck()">Edit Deck</button>
+    <div id="counters">
+        <h1>Counters</h1>
+        <div id="damageDiv">
+            <button onclick="decreaseDamage()">-</button>
+            <label id="damage">0</label>
+            <button onclick="increaseDamage()">+</button>
+            <label>Damage</label>
+        </div>
+        <div id="fearDiv">
+            <button onclick="decreaseFear()">-</button>
+            <label id="fear">0</label>
+            <button onclick="increaseFear()">+</button>
+            <label>Fear</label>
+        </div>
+        <div id="inspirationDiv">
+            <button onclick="decreaseInspiration()">-</button>
+            <label id="inspiration">0</label>
+            <button onclick="increaseInspiration()">+</button>
+            <label>Inspiration</label>
+        </div>  
+    </div>
     <div id="heroselect" hidden=1>
         <select name="Hero" onchange="selectHero(this)">
             <Option value=""></Option>

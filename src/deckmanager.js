@@ -149,6 +149,45 @@ function updateDeckFromAllCards() {
     updateDeck();
 }
 
+function decreaseDamage() {
+    elem = document.getElementById("damage");
+    count=parseInt(elem.innerText,10);
+    if (count>0) {
+        elem.innerText=count-1;
+    }
+}
+
+function increaseDamage() {
+    elem = document.getElementById("damage");
+    elem.innerHTML=parseInt(elem.innerHTML,10)+1;
+}
+
+function decreaseFear() {
+    elem = document.getElementById("fear");
+    count=parseInt(elem.innerText,10);
+    if (count>0) {
+        elem.innerText=count-1;
+    }
+}
+
+function increaseFear() {
+    elem = document.getElementById("fear");
+    elem.innerHTML=parseInt(elem.innerHTML,10)+1;
+}
+
+function decreaseInspiration() {
+    elem = document.getElementById("inspiration");
+    count=parseInt(elem.innerText,10);
+    if (count>0) {
+        elem.innerText=count-1;
+    }
+}
+
+function increaseInspiration() {
+    elem = document.getElementById("inspiration");
+    elem.innerHTML=parseInt(elem.innerHTML,10)+1;
+}
+
 function showDeck() {
 
     parentElement = document.getElementById("deck");
