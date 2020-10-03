@@ -3,6 +3,8 @@ let hand = []
 let discard = []
 let scoutedcards = []
 let removedcards = []
+let zones=["deck","hand","discard","scoutedcards","removedcards"]
+deckSectionCreated=0;
 
 function reset() {
     deck = deck.concat(hand,discard,scoutedcards);
@@ -13,10 +15,15 @@ function reset() {
     updateDiscard();
     updateHand();
     updateScoutedCards();
+    updateRemoved();
 }
 function editDeck() {
     parentElement = document.getElementById("allcards");
     parentElement.hidden=0;
+    if (deckSectionCreated) {
+        return;
+    }
+    deckSectionCreated=1;
     addedWeakness=0;
     while(parentElement.firstChild) {
         parentElement.removeChild(parentElement.firstChild);
@@ -49,7 +56,6 @@ function editDeck() {
         appendChildElement.innerText = "Add to Deck";
         appendChildElement.id = parentid+"Add";
         if (allcards[i].inDeck==1) {
-            console.log("got here");
             appendChildElement.disabled=1;
         }
     
@@ -63,7 +69,7 @@ function editDeck() {
         }
     }
     updateDeckFromAllCards();
-    shuffleDeck();
+    //shuffleDeck();
 }
 
 function stopEditingDeck() {
@@ -105,7 +111,9 @@ function addToDeckFromAllcards(id) {
     elem.disabled=1;
     elem = document.getElementById("allcardsDiv"+id+"Remove");
     elem.disabled=0;
-    updateDeckFromAllCards();
+    deck.push(allcards[id]);
+    updateDeck();
+    //updateDeckFromAllCards();
 }
 
 function removeFromDeckFromAllcards(id) {
@@ -114,7 +122,20 @@ function removeFromDeckFromAllcards(id) {
     elem.disabled=0;
     elem = document.getElementById("allcardsDiv"+id+"Remove");
     elem.disabled=1;
-    updateDeckFromAllCards();
+
+    for (i=0; i<zones.length; i++) {
+        index=eval(zones[i]).findIndex((element)=>element.Name==allcards[id].Name && element.Number==allcards[id].Number);
+        console.log(index);
+        if (index!=-1) {
+            eval(zones[i]).splice(index,1);
+            updateDeck();
+            updateDiscard();
+            updateHand();
+            updateScoutedCards();
+            updateRemoved();
+        }
+    }
+    //updateDeckFromAllCards();
 }
 
 function updateDeckFromAllCards() {
