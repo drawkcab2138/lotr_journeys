@@ -4,9 +4,10 @@ let discard = []
 let scoutedcards = []
 let removedcards = []
 let zones=["deck","hand","discard","scoutedcards","removedcards"]
-deckSectionCreated=0;
+let deckSectionCreated = 0;
 let hero = "";
 let role = "";
+let filter = "All";
 
 function reset() {
     deck = deck.concat(hand,discard,scoutedcards);
@@ -33,24 +34,34 @@ function editDeck() {
         return;
     }
     deckSectionCreated=1;
+    drawAllCards(1);
+    updateDeckFromAllCards();
+}
+
+function drawAllCards(doSetup) {
     addedWeakness=0;
+    parentElement = document.getElementById("allcards");
     while(parentElement.firstChild) {
         parentElement.removeChild(parentElement.firstChild);
     }
     for (i=0; i<allcards.length; i++) {
-        if (allcards[i].inDeck) {
-            allcards[i].inDeck=1;
-        } else if (allcards[i].inDeck==0) {
-            
-        } else if (allcards[i].Type=="Basic") {
-            allcards[i].inDeck=1;
-        } else if (allcards[i].Type=="Weakness" && addedWeakness==0) {
-            allcards[i].inDeck=1;
-            addedWeakness=1;
-        } else {
-            allcards[i].inDeck=0;
+        if (doSetup) {
+            if (allcards[i].inDeck) {
+                allcards[i].inDeck=1;
+            } else if (allcards[i].inDeck==0) {
+                
+            } else if (allcards[i].Type=="Basic") {
+                allcards[i].inDeck=1;
+            } else if (allcards[i].Type=="Weakness" && addedWeakness==0) {
+                allcards[i].inDeck=1;
+                addedWeakness=1;
+            } else {
+                allcards[i].inDeck=0;
+            }
         }
-
+        if (filter!="All" && filter!=allcards[i].Type) {
+            continue;
+        }
         parentElement = document.getElementById("allcards");
         childElement = document.createElement("div");
         appendChildElement = parentElement.appendChild(childElement);
@@ -77,7 +88,6 @@ function editDeck() {
             appendChildElement.disabled=1;
         }
     }
-    updateDeckFromAllCards();
 }
 
 function displayCard(card, elem, displayAll) {
@@ -199,6 +209,11 @@ function showDeck() {
         parentElement.hidden=0;
     }
     updateDeck();
+}
+
+function selectFilter(selectObject) {
+    filter=selectObject.value;
+    drawAllCards(0);
 }
 
 function selectHero(selectObject) {

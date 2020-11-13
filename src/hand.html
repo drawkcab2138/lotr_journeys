@@ -11,34 +11,56 @@
     <button onclick="reset()">Reset</button>
     <button onclick="editDeck()">Edit Deck</button>
     <div id="heroselect" hidden=1>
-        <select name="Hero" onchange="selectHero(this)">
-            <Option value=""></Option>
-            <Option value="Aragorn">Aragorn</Option>
-            <Option value="Arwen">Arwen</Option>
-            <Option value="Balin">Balin</Option>
-            <Option value="Beravor">Beravor</Option>
-            <Option value="Bilbo">Bilbo</Option>
-            <Option value="Dis">Dis</Option>
-            <Option value="Eleanor">Eleanor</Option>
-            <Option value="Elena">Elena</Option>
-            <Option value="Gandalf">Gandalf</Option>
-            <Option value="Gimli">Gimli</Option>
-            <Option value="Legolas">Legolas</Option>
-        </select>
-        <select name="Role" onchange="selectRole(this)">
-            <Option value=""></Option>
-            <Option value="Burglar">Burglar</Option>
-            <Option value="Captain">Captain</Option>
-            <Option value="Delver">Delver</Option>
-            <Option value="Guardian">Guardian</Option>
-            <Option value="Herbalist">Herbalist</Option>
-            <Option value="Hunter">Hunter</Option>
-            <Option value="Meddler">Meddler</Option>
-            <Option value="Musician">Musician</Option>
-            <Option value="Pathfinder">Pathfinder</Option>
-            <Option value="Smith">Smith</Option>
-            <Option value="Traveller">Traveller</Option>
-        </select>
+        <div id="selectors">
+            <label>Hero:</label>
+            <select name="Hero" onchange="selectHero(this)">
+                <Option value=""></Option>
+                <Option value="Aragorn">Aragorn</Option>
+                <Option value="Arwen">Arwen</Option>
+                <Option value="Balin">Balin</Option>
+                <Option value="Beravor">Beravor</Option>
+                <Option value="Bilbo">Bilbo</Option>
+                <Option value="Dis">Dis</Option>
+                <Option value="Eleanor">Eleanor</Option>
+                <Option value="Elena">Elena</Option>
+                <Option value="Gandalf">Gandalf</Option>
+                <Option value="Gimli">Gimli</Option>
+                <Option value="Legolas">Legolas</Option>
+            </select>
+            <label>Role:</label>
+            <select name="Role" onchange="selectRole(this)">
+                <Option value=""></Option>
+                <Option value="Burglar">Burglar</Option>
+                <Option value="Captain">Captain</Option>
+                <Option value="Delver">Delver</Option>
+                <Option value="Guardian">Guardian</Option>
+                <Option value="Herbalist">Herbalist</Option>
+                <Option value="Hunter">Hunter</Option>
+                <Option value="Meddler">Meddler</Option>
+                <Option value="Musician">Musician</Option>
+                <Option value="Pathfinder">Pathfinder</Option>
+                <Option value="Smith">Smith</Option>
+                <Option value="Traveller">Traveller</Option>
+            </select>
+        </div id="filter">
+            <label>Filter:</label>
+            <select name="Filter" onchange="selectFilter(this)">
+                <Option value="All"></Option>
+                <Option value="Burglar">Burglar</Option>
+                <Option value="Captain">Captain</Option>
+                <Option value="Delver">Delver</Option>
+                <Option value="Guardian">Guardian</Option>
+                <Option value="Herbalist">Herbalist</Option>
+                <Option value="Hunter">Hunter</Option>
+                <Option value="Meddler">Meddler</Option>
+                <Option value="Musician">Musician</Option>
+                <Option value="Pathfinder">Pathfinder</Option>
+                <Option value="Smith">Smith</Option>
+                <Option value="Title">Title</Option>
+                <Option value="Traveller">Traveller</Option>
+                <Option value="Weakness">Weakness</Option>
+            </select>
+        </div>
     </div>
     <div id="allcards" hidden=1></div>
     <div id="counters">
